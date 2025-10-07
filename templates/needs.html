@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block title %}Current Needs{% endblock %}
+{% block content %}
+  <h1 class="mb-4">Current Needs Across All Orphanages</h1>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Orphanage</th>
+        <th>Item Needed</th>
+        <th>Quantity Required</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for need in needs %}
+        <tr>
+          <td>{{ need.orphanage_name }}</td>
+          <td>{{ need.category_name }}</td>
+          <td>{{ need.required_qty }}</td>
+          <td>
+            <a href="#" class="btn btn-success btn-sm">Fulfill This Need</a>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="4" class="text-center">No needs reported at the moment.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

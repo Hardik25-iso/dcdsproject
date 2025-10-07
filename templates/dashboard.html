@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+  <h1 class="mb-4">Dashboard: {{ orphanage.name }}</h1>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Children Registered</h5>
+          <p class="card-text fs-1 fw-bold">{{ child_count }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">Staff Members</h5>
+          <p class="card-text fs-1 fw-bold">{{ staff_count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <h3>⚠️ Critical Needs Alerts</h3>
+      {% if critical_needs %}
+        <ul class="list-group">
+          {% for need in critical_needs %}
+            <li class="list-group-item list-group-item-danger">
+              <strong>{{ need.category_name }}:</strong> 
+              Currently have {{ need.quantity }}, require {{ need.required_qty }}.
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="alert alert-success">No critical shortages. All needs are met!</div>
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <h3>Recent Donations</h3>
+      {% if recent_donations %}
+        <ul class="list-group">
+          {% for donation in recent_donations %}
+            <li class="list-group-item">
+              <strong>From:</strong> {{ donation.name }} <br>
+              <strong>Date:</strong> {{ donation.donation_date.strftime('%Y-%m-%d') }}
+              {% if donation.cash_amount %}
+                | <strong>Amount:</strong> ₹{{ "%.2f"|format(donation.cash_amount) }}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No recent donations to display.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mt-5">
+      <h3>Surplus Rerouting Suggestions</h3>
+      <div class="alert alert-info">Rerouting suggestions will appear here. (To be implemented)</div>
+  </div>
+
+{% endblock %}

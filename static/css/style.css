@@ -1,0 +1,6 @@
+/* Custom styles can go here */
+/* For example, to make the dashboard cards more colorful */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
