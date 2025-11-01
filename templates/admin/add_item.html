@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Add Item{% endblock %}
+
+{% block content %}
+    <h1>Add Item for {{ current_user.orphanage.name }}</h1>
+    
+    <form method="post">
+        <div style="margin-bottom: 10px;">
+            <label for="item_name">Item Name:</label><br>
+            <input type="text" id="item_name" name="item_name" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category" required style="width: 300px;" value="Food">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="quantity_needed">Quantity Needed:</label><br>
+            <input type="number" id="quantity_needed" name="quantity_needed" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="checkbox" id="is_urgent" name="is_urgent">
+            <label for="is_urgent">Mark as Urgent</label>
+        </div>
+        <div>
+            <button type="submit">Save Item</button>
+        </div>
+    </form>
+{% endblock %}

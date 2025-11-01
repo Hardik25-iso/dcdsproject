@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight gradient-text-purple">Connecting Donations with Real Needs</h1>
+        <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Your contribution bridges the gap between what's needed and what's given. Make a real difference.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center mt-12">
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+            <h2 class="text-3xl font-bold text-gray-800">For Donors</h2>
+            <p class="mt-2 text-gray-600">See a live, verified list of needs from orphanages near you.</p>
+            <a href="{{ url_for('needs_list') }}" class="mt-6 inline-block bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 shadow-lg shadow-purple-500/40 transition-all btn-glow">I am a Donor</a>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200" style="transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+            <h2 class="text-3xl font-bold text-gray-800">For Orphanages</h2>
+            <p class="mt-2 text-gray-600">Log in to manage your profile and list of required items.</p>
+            <a href="{{ url_for('login') }}" class="mt-6 inline-block bg-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-purple-700 shadow-lg shadow-purple-500/40 transition-all btn-glow">I am an Orphanage</a>
+        </div>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Details for {{ orphanage.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ orphanage.name }}</h1>
+    <p>Manage the items needed for this orphanage.</p>
+    <a href="{{ url_for('admin_dashboard') }}"> &larr; Back to Dashboard</a>
+    <hr>
+
+    <h3>Items List</h3>
+    <table border="1" style="width:100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="padding: 8px;">Item Name</th>
+                <th style="padding: 8px;">Category</th>
+                <th style="padding: 8px;">Quantity</th>
+                <th style="padding: 8px;">Status</th>
+                <th style="padding: 8px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in orphanage.items %}
+            <tr>
+                <td style="padding: 8px;">{{ item.item_name }}</td>
+                <td style="padding: 8px;">{{ item.category }}</td>
+                <td style="padding: 8px;">{{ item.quantity_needed }}</td>
+                <td style="padding: 8px;">{{ item.status }}</td>
+                <td style="padding: 8px;">
+                    <a href="{{ url_for('edit_item', item_id=item.id) }}" class="button-link">Edit</a> |
+                    <form action="{{ url_for('delete_item', item_id=item.id) }}" method="post" style="display: inline;">
+                        <button type="submit" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 8px;">No items have been added for this orphanage yet.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

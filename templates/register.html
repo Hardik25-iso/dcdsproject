@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Register Your Orphanage{% endblock %}
+
+{% block content %}
+    <h1>Register Your Orphanage</h1>
+    
+    <form method="post">
+        <h3>Account Details</h3>
+        <div style="margin-bottom: 10px;">
+            <label for="email">Login Email:</label><br>
+            <input type="email" id="email" name="email" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required style="width: 300px;">
+        </div>
+        <hr>
+        <h3>Orphanage Details</h3>
+        <div style="margin-bottom: 10px;">
+            <label for="name">Orphanage Name:</label><br>
+            <input type="text" id="name" name="name" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" required style="width: 300px; height: 80px;"></textarea>
+        </div>
+         <div style="margin-bottom: 10px;">
+            <label for="contact_email">Public Contact Email:</label><br>
+            <input type="email" id="contact_email" name="contact_email" required style="width: 300px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="description">Description (Optional):</label><br>
+            <textarea id="description" name="description" style="width: 300px; height: 80px;"></textarea>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+{% endblock %}

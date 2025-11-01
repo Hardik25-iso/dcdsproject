@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ item.item_name }}{% endblock %}
+
+{% block content %}
+    <h1>Edit Item for {{ item.orphanage.name }}</h1>
+    
+    <form method="post">
+        <div style="margin-bottom: 10px;">
+            <label for="item_name">Item Name:</label><br>
+            <input type="text" id="item_name" name="item_name" required style="width: 300px;" value="{{ item.item_name }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category" required style="width: 300px;" value="{{ item.category }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="quantity_needed">Quantity Needed:</label><br>
+            <input type="number" id="quantity_needed" name="quantity_needed" required style="width: 300px;" value="{{ item.quantity_needed }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="status">Status:</label><br>
+            <select name="status" id="status" style="width: 300px;">
+                <option value="Active" {% if item.status == 'Active' %}selected{% endif %}>Active</option>
+                <option value="Fulfilled" {% if item.status == 'Fulfilled' %}selected{% endif %}>Fulfilled</option>
+            </select>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="checkbox" id="is_urgent" name="is_urgent" {% if item.is_urgent %}checked{% endif %}>
+            <label for="is_urgent">Mark as Urgent</label>
+        </div>
+        <div>
+            <button type="submit">Update Item</button>
+        </div>
+    </form>
+{% endblock %}

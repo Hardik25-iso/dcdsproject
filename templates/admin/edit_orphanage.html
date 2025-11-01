@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ orphanage.name }}{% endblock %}
+
+{% block content %}
+    <h1>Edit {{ orphanage.name }}</h1>
+    
+    <form method="post">
+        <div style="margin-bottom: 10px;">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required style="width: 300px;" value="{{ orphanage.name }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="city">City:</label><br>
+            <input type="text" id="city" name="city" required style="width: 300px;" value="{{ orphanage.city }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" required style="width: 300px; height: 80px;">{{ orphanage.address }}</textarea>
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="email">Contact Email:</label><br>
+            <input type="email" id="email" name="email" required style="width: 300px;" value="{{ orphanage.contact_email }}">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <label for="description">Description (Optional):</label><br>
+            <textarea id="description" name="description" style="width: 300px; height: 80px;">{{ orphanage.description }}</textarea>
+        </div>
+        <div>
+            <button type="submit">Update Orphanage</button>
+        </div>
+    </form>
+{% endblock %}
